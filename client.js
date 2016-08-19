@@ -4,7 +4,7 @@ const Promise = require('bluebird')
 const exec = Promise.promisify(require('child_process').exec)
 const log = Promise.promisify(console.log)
 const restify = require('restify')
-const messageServer = process.env.SERVER || "http://localhost:5000"
+const messageServer = process.env.SERVER || "http://keybasechat.herokuapp.com"
 const client = restify.createStringClient({url: messageServer});
 
 const ACTION = process.argv[2]
