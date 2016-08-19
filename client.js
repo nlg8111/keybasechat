@@ -23,6 +23,11 @@ function createKeybasePgpDecryptMessageCmd(message) {
 const actions = {
   get() {
     return client.get(`/users/${RECIPIENT}/messages`, (err, req, res, data) => {
+      if(data == "") {
+        console.log("No messages.")
+        return
+      }
+
       exec(createKeybasePgpDecryptMessageCmd(data))
         .then(console.log)
         .then(() => console.log('done.'))

@@ -1,25 +1,23 @@
+"use strict"
+
 var restify = require('restify');
+var fs = require('fs')
+const Messages = require('./messages')
 
 var server = restify.createServer();
 server.use(restify.bodyParser());
 
-var messages = {}
+var messages = new Messages('./messages/messages.json')
 
 server.get("/users/:name/messages", function(req, res, next){
 	console.log(`GETTING MESSAGES FOR ${req.params.name}`)
-	msgs = messages[req.params.name]
-	res.send(msgs && msgs.length > 0 ? msgs.shift() : [])
+	res.send(messages.getNextMessageForUser(req.params.name))
 	next()
 });
 
 server.post("/users/:name/messages", function(req, res, next){
 	console.log(`ADDING MESSAGES FOR ${req.params.name}`)
-	if(messages[req.params.name]) {
-		messages[req.params.name].push(req.params.message)
-	} else {
-		messages[req.params.name] = [req.params.message]
-	}
-
+	messages.addMessageForUser(req.params.name, req.params.message)
 	res.send("Posted to " + req.params.name)
 	next()
 });
