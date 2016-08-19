@@ -26,5 +26,6 @@ node client.js msg <keybase-username> <message>
 * Error handling for ...everything
 * Some notification type of thing "You have (N) new messages"
 * Maybe change away from Retrieve once and delete -model to something more sophisticated
+* Some authentication to stop people from getting messages meant for others, even if they are encrypted
 * Realtime chat
-* Some globally installable NPM package that remembers your keybase username and makes the usability better.
+* Some globally installable NPM package that remembers your keybase username and makes the usability better
