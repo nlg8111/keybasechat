@@ -22,10 +22,13 @@ Sending messages to someone:
 node client.js msg <keybase-username> <message>
 ```
 
+### Warning: Service doesn't have any persistence currently - once a new version is deployed, all messages are lost.
+
 ## TODO
 * Error handling for ...everything
 * Some notification type of thing "You have (N) new messages"
 * Maybe change away from Retrieve once and delete -model to something more sophisticated
 * Some authentication to stop people from getting messages meant for others, even if they are encrypted
+* Some actual persistence to messages
 * Realtime chat
 * Some globally installable NPM package that remembers your keybase username and makes the usability better
